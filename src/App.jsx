@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Header from './layout/Header'
-import Category from './components/Category' 
-import Slider from './components/Slider' 
+import HomePage from './Pages/HomePage';
+
 
 
 function App() {
@@ -13,9 +13,7 @@ function App() {
       <Header />
       <div>
         <Switch>
-           <Route exact path="/">
-              <Slider />
-              <Category />
+        <Route exact path="/" component={HomePage} />
           </Route>
         </Switch>
         <ToastContainer />
