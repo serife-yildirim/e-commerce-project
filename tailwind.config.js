@@ -1,37 +1,84 @@
 // tailwind.config.js
-import plugin from 'tailwindcss/plugin'
+import plugin from 'tailwindcss/plugin';
 
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,jsx,ts,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       colors: {
-        
+        // ProductCard ve HomePage bileşenlerinde kullanılan renkler
         Primary: '#23A6F0',
         Secondary: '#23856D',
-        alert: '#E77C40',
+        Secondary2: '#3C403D',
+        lightBackground: '#FFFFFF',
         darkBackground: '#252B42',
+        succes: '#20C071',    
+        alert: '#E77C40',
+        muted: '#BDBDBD',
+        danger: '#E74040',
+        disabledElement: '#8EC2F2',
+        lightGray: '#FAFAFA',
         textColor: '#252B42',
         SecondaryTextColor: '#737373',
-        muted: '#999999',
+        lightTextColor: '#FFFFFF',
+        lightGray2: '#E6E6E6',
+        // Eğer "text-Secondary" farklı bir renkse buraya ekleyin
+        Secondary: '#23856D',
+      },
+      width: {
+        // ProductCard bileşeninde kullanılan genişlikler
+        "Card": "325px",
       },
       height: {
-        
-        cardBestceller: '425px',
+        // ProductCard ve HomePage bileşenlerinde kullanılan yükseklikler
+        'Category': '500px',
+        'CategorySmall': '250px',
+        'ProductCard': '425px',
+        'BlogCard': '300px',
       },
     },
+    container: {
+      padding: {
+        DEFAULT: '1rem',
+        sm: '2rem',
+        lg: '4rem',
+        xl: '5rem',
+        '2xl': '6rem',
+      },
+    },
+    headers: {
+      h1: "58px",
+      h2: "40px",
+      h3: "30px",
+      h4: "24px",
+      h5: "20px",
+      h6: "16px",
+      h7: "14px",
+      h8: "12px",
+    }
   },
   plugins: [
-    plugin(function({ addUtilities }) {
-   
-      const newUtilities = {
-        '.h6': { fontSize: '16px' },
-        '.h7': { fontSize: '14px' },
-      }
-      addUtilities(newUtilities)
+    // Başlık boyutlarını ekleyen plugin
+    plugin(function({ addUtilities, theme }) {
+      const headers = theme('headers');
+      const headerUtilities = Object.entries(headers).reduce((acc, [key, value]) => {
+        acc[`.${key}`] = { fontSize: value };
+        return acc;
+      }, {});
+
+      addUtilities(headerUtilities);
+    }),
+
+    // Tüm elementlere global border ekleyen plugin
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        "*": {
+          border: "1px solid rgba(0, 0, 0, 0.5)"
+        },
+      });
     }),
   ],
 }
