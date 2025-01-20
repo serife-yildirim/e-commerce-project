@@ -31,6 +31,7 @@ export default {
       width: {
         // ProductCard bileşeninde kullanılan genişlikler
         "Card": "325px",
+        "BlogCardWeb" : "240px",
       },
       height: {
         // ProductCard ve HomePage bileşenlerinde kullanılan yükseklikler
@@ -38,6 +39,7 @@ export default {
         'CategorySmall': '250px',
         'ProductCard': '425px',
         'BlogCard': '300px',
+        'BlogCardWeb' : "420px"
       },
     },
     
